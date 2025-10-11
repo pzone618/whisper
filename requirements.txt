@@ -1,7 +1,21 @@
+# OpenAI Whisper Dependencies
+# Core dependencies matching pyproject.toml
+
+more-itertools
 numba
 numpy
+tiktoken
 torch
 tqdm
-more-itertools
-tiktoken
-triton>=2.0.0;platform_machine=="x86_64" and sys_platform=="linux" or sys_platform=="linux2"
+
+# Triton is only required on Linux x86_64 systems
+# macOS (including Apple Silicon) does not need triton
+triton>=2.0.0; platform_machine=="x86_64" and (sys_platform=="linux" or sys_platform=="linux2")
+
+# Optional dependencies for development
+# Uncomment if needed for development work:
+# black
+# flake8  
+# isort
+# pytest
+# scipy
