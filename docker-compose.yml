@@ -1,0 +1,66 @@
+# Docker Compose compatible file for Podman
+# Use with: podman-compose up or podman play kube whisper-compose.yaml
+
+version: '3.8'
+
+services:
+  whisper:
+    build:
+      context: .
+      dockerfile: Containerfile
+    image: localhost/whisper:latest
+    container_name: whisper-app
+    
+    # Security context - non-root user
+    user: "1000:1000"
+    
+    # Volume mounts
+    volumes:
+      # Model cache directory (persistent)
+      - whisper-models:/models
+      # Data directory for input/output files
+      - ./data:/data:Z
+      # Optional: mount for custom audio files
+      - ${AUDIO_INPUT_DIR:-./audio_input}:/input:Z,ro
+      - ${AUDIO_OUTPUT_DIR:-./audio_output}:/output:Z
+    
+    # Environment variables
+    environment:
+      - WHISPER_CACHE_DIR=/models
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Network mode
+    network_mode: bridge
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: '2.0'
+        reservations:
+          memory: 1G
+          cpus: '0.5'
+    
+    # Interactive mode for CLI usage
+    stdin_open: true
+    tty: true
+    
+    # Default command - can be overridden
+    command: ["whisper", "--help"]
+
+volumes:
+  whisper-models:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/whisper_models
+      o: bind
+
+networks:
+  default:
+    driver: bridge

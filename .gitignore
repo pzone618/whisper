@@ -1,11 +1,215 @@
+# =============================================================================
+# Python
+# =============================================================================
 __pycache__/
 *.py[cod]
 *$py.class
-*.egg-info
-.pytest_cache
-.ipynb_checkpoints
+*.so
+*.egg
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.coverage
+.tox/
+.cache/
+.mypy_cache/
+.ruff_cache/
 
-thumbs.db
+# =============================================================================
+# Jupyter Notebooks
+# =============================================================================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# =============================================================================
+# Virtual Environments
+# =============================================================================
+venv/
+env/
+ENV/
+.env
+.venv/
+conda-env/
+.conda/
+
+# =============================================================================
+# IDEs and Editors
+# =============================================================================
+.idea/
+# .vscode/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+
+# =============================================================================
+# Operating System
+# =============================================================================
+# macOS
 .DS_Store
-.idea
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# =============================================================================
+# Whisper Specific
+# =============================================================================
+# Audio/Video Files (input/output) - exclude files but keep directories
+audio_input/*
+!audio_input/.gitkeep
+audio_output/*
+!audio_output/.gitkeep
+video_input/*
+!video_input/.gitkeep
+video_output/*
+!video_output/.gitkeep
+
+# Audio/Video file extensions (anywhere in project)
+*.wav
+*.mp3
+*.mp4
+*.avi
+*.mkv
+*.mov
+*.m4a
+*.flac
+*.ogg
+*.aac
+*.wma
+
+# Subtitle Files (output)
+*.srt
+*.vtt
+*.ass
+*.ssa
+*.sub
+*.json
+
+# Whisper Models (large files)
+whisper_models/
+*.pt
+*.bin
+*.safetensors
+models/
+checkpoints/
+
+# =============================================================================
+# Container & Deployment
+# =============================================================================
+# Docker
+.dockerignore
+docker-compose.override.yml
+.docker/
+
+# Podman
+.podman/
+
+# Kubernetes
+*.kubeconfig
+secrets/
+*.secret
+
+# =============================================================================
+# Logs and Temporary Files
+# =============================================================================
+*.log
+*.out
+*.err
+log/
+logs/
+tmp/
+temp/
+.tmp/
+
+# =============================================================================
+# Development and Testing
+# =============================================================================
+# Test artifacts
+test_output/
+test_audio/
+test_results/
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Configuration files with sensitive data
+config.local.*
+.env.local
+.env.production
+secrets.yaml
+api_keys.txt
+
+# =============================================================================
+# Machine Learning & Data
+# =============================================================================
+# Large data files
+data/audio/
+data/video/
+data/datasets/
+*.csv
+*.xlsx
+*.pickle
+*.pkl
+*.h5
+*.hdf5
+
+# Model artifacts
+wandb/
+mlruns/
+.mlflow/
+tensorboard_logs/
+
+# =============================================================================
+# Backup and Archive Files
+# =============================================================================
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# =============================================================================
+# Package Manager
+# =============================================================================
+# npm
+node_modules/
+package-lock.json
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# conda
+.conda-env
+
+# =============================================================================
+# Documentation Build
+# =============================================================================
+_build/
+_static/
+_templates/
+site/

@@ -1,0 +1,102 @@
+# .containerignore - Files and directories to exclude from container build context
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+docs/
+
+# Test files
+tests/
+test_*.py
+*_test.py
+conftest.py
+
+# Jupyter notebooks
+*.ipynb
+notebooks/
+.ipynb_checkpoints/
+
+# Local data directories
+whisper_models/
+audio_input/
+audio_output/
+data/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Container and deployment files (avoid recursive copies)
+Containerfile
+docker-compose.yml
+whisper-kube.yaml
+deploy.sh
+.containerignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Cache directories
+.cache/
+.pytest_cache/
+
+# Local configuration
+.env
+.env.local
+config.local.*
+
+# Logs
+*.log
+logs/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Package manager files (keep only requirements.txt and pyproject.toml)
+poetry.lock
+Pipfile
+Pipfile.lock
+conda-environment.yml

@@ -7,6 +7,23 @@
 
 Whisper is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitasking model that can perform multilingual speech recognition, speech translation, and language identification.
 
+## 🚀 快速开始 (新 Mac 一键部署)
+
+### 一键部署
+```bash
+curl -sSL https://raw.githubusercontent.com/pzone618/whisper/feature/mac/quick_deploy.sh | bash
+```
+
+### 分步部署
+```bash
+git clone https://github.com/pzone618/whisper.git
+cd whisper && git checkout feature/mac
+./scripts/setup_new_mac.sh
+source venv/bin/activate
+```
+
+📚 **完整部署指南**: [QUICK_DEPLOY_GUIDE.md](./QUICK_DEPLOY_GUIDE.md)
+
 
 ## Approach
 
@@ -154,6 +171,63 @@ print(result.text)
 
 Please use the [🙌 Show and tell](https://github.com/openai/whisper/discussions/categories/show-and-tell) category in Discussions for sharing more example usages of Whisper and third-party extensions such as web demos, integrations with other tools, ports for different platforms, etc.
 
+---
+
+## 🌟 Enhanced Features for Chinese Users
+
+This repository has been enhanced with additional tools and documentation for easier deployment and multilingual subtitle extraction:
+
+### 📚 Complete Documentation
+
+- **[DOCUMENTATION_INDEX.md](./DOCUMENTATION_INDEX.md)** - 完整文档索引和使用指南
+- **[MULTILINGUAL_SUBTITLES_GUIDE.md](./MULTILINGUAL_SUBTITLES_GUIDE.md)** - 多语言字幕提取详细指南
+- **[CONTAINER_DEPLOYMENT.md](./CONTAINER_DEPLOYMENT.md)** - 容器化部署完整文档
+
+### 🚀 Quick Start Tools
+
+#### 1. Container Deployment (Recommended)
+```bash
+# Build and deploy with Podman
+./deploy.sh build
+./deploy.sh transcribe your_audio.mp3 medium
+
+# Interactive container
+./deploy.sh run
+```
+
+#### 2. Batch Processing
+```bash
+# Batch subtitle extraction
+./batch_subtitle.sh Chinese large srt
+
+# Python batch processing
+python subtitle_extractor.py ./audio_files/ --batch --model medium
+```
+
+#### 3. Advanced Python Interface
+```bash
+# Single file with multiple formats
+python subtitle_extractor.py audio.mp3 --language Chinese --formats srt vtt json
+
+# Language detection only
+python subtitle_extractor.py audio.mp3 --detect-only
+```
+
+### 🎯 Key Features
+
+- **99 Languages Supported** - Including Chinese (Mandarin/Cantonese), Japanese, Korean, and more
+- **Multiple Output Formats** - SRT, VTT, TXT, JSON with customizable formatting
+- **Container Deployment** - Production-ready Podman/Docker containers
+- **Batch Processing** - Automated tools for processing multiple files
+- **Chinese Documentation** - Complete guides in Chinese for easier adoption
+
+### 📋 Supported Languages
+
+Chinese (中文) | Japanese (日本語) | Korean (한국어) | English | French | German | Spanish | Russian | Arabic | And 90+ more...
+
+For the complete list and usage examples, see [MULTILINGUAL_SUBTITLES_GUIDE.md](./MULTILINGUAL_SUBTITLES_GUIDE.md).
+
+---
 
 ## License
 

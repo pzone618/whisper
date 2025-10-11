@@ -1,0 +1,134 @@
+# Kubernetes-style YAML for Podman Kube Play
+apiVersion: v1
+kind: Pod
+metadata:
+  name: whisper-pod
+  labels:
+    app: whisper
+    version: "1.0"
+spec:
+  restartPolicy: OnFailure
+  
+  # Security context
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    runAsNonRoot: true
+  
+  containers:
+  - name: whisper
+    image: localhost/whisper:latest
+    
+    # Security context
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+        add:
+        - CAP_DAC_OVERRIDE
+      readOnlyRootFilesystem: false
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 1000
+    
+    # Resource requests and limits
+    resources:
+      requests:
+        memory: "1Gi"
+        cpu: "500m"
+      limits:
+        memory: "4Gi"
+        cpu: "2000m"
+    
+    # Environment variables
+    env:
+    - name: WHISPER_CACHE_DIR
+      value: "/models"
+    - name: PYTHONUNBUFFERED
+      value: "1"
+    - name: PYTHONDONTWRITEBYTECODE
+      value: "1"
+    
+    # Volume mounts
+    volumeMounts:
+    - name: whisper-models
+      mountPath: /models
+    - name: data-volume
+      mountPath: /data
+    - name: input-volume
+      mountPath: /input
+      readOnly: true
+    - name: output-volume
+      mountPath: /output
+    
+    # Working directory
+    workingDir: /data
+    
+    # Interactive shell for CLI usage
+    stdin: true
+    tty: true
+    
+    # Default command
+    command: ["whisper"]
+    args: ["--help"]
+    
+    # Health check (liveness probe)
+    livenessProbe:
+      exec:
+        command:
+        - whisper
+        - "--help"
+      initialDelaySeconds: 30
+      periodSeconds: 30
+      timeoutSeconds: 10
+      failureThreshold: 3
+    
+    # Readiness probe
+    readinessProbe:
+      exec:
+        command:
+        - python3
+        - "-c"
+        - "import whisper; print('Whisper ready')"
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      timeoutSeconds: 5
+      failureThreshold: 3
+
+  # Volumes
+  volumes:
+  - name: whisper-models
+    hostPath:
+      path: ./whisper_models
+      type: DirectoryOrCreate
+  - name: data-volume
+    hostPath:
+      path: ./data
+      type: DirectoryOrCreate
+  - name: input-volume
+    hostPath:
+      path: ./audio_input
+      type: DirectoryOrCreate
+  - name: output-volume
+    hostPath:
+      path: ./audio_output
+      type: DirectoryOrCreate
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whisper-service
+  labels:
+    app: whisper
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: whisper

@@ -1,0 +1,24 @@
+# 视频输入目录
+
+此目录用于存放待处理的视频文件。
+
+## 支持的视频格式
+- MP4 (推荐) - 最常用，兼容性好
+- AVI - 传统格式，文件较大
+- MKV - 支持多音轨，适合多语言视频
+- MOV - Apple 格式
+- WMV - Windows Media 格式
+- FLV - Flash 视频格式
+- WEBM - 网页视频格式
+
+## 使用方法
+1. 将视频文件放入此目录
+2. 运行批量处理: `./batch_subtitle.sh`
+3. 或使用 Python 工具: `python subtitle_extractor.py ./video_input/`
+4. Whisper 会自动提取音频轨道进行语音识别
+
+## 注意事项
+- 视频文件不会被提交到 Git 仓库（已在 .gitignore 中排除）
+- Whisper 会自动从视频中提取音频进行处理
+- 大文件建议先进行格式转换或压缩
+- 支持多音轨视频的音轨选择
