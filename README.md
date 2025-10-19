@@ -40,7 +40,7 @@ We used Python 3.9.9 and [PyTorch](https://pytorch.org/) 1.10.1 to train and tes
 
 Alternatively, the following command will pull and install the latest commit from this repository, along with its Python dependencies:
 
-    pip install git+https://github.com/openai/whisper.git 
+    pip install git+https://github.com/openai/whisper.git
 
 To update the package to the latest version of this repository, please run:
 
@@ -102,7 +102,7 @@ The following command will transcribe speech in audio files, using the `turbo` m
 whisper audio.flac audio.mp3 audio.wav --model turbo
 ```
 
-The default setting (which selects the `turbo` model) works well for transcribing English. However, **the `turbo` model is not trained for translation tasks**. If you need to **translate non-English speech into English**, use one of the **multilingual models** (`tiny`, `base`, `small`, `medium`, `large`) instead of `turbo`. 
+The default setting (which selects the `turbo` model) works well for transcribing English. However, **the `turbo` model is not trained for translation tasks**. If you need to **translate non-English speech into English**, use one of the **multilingual models** (`tiny`, `base`, `small`, `medium`, `large`) instead of `turbo`.
 
 For example, to transcribe an audio file containing non-English speech, you can specify the language:
 
@@ -129,7 +129,7 @@ See [tokenizer.py](https://github.com/openai/whisper/blob/main/whisper/tokenizer
 
 ## Python usage
 
-Transcription can also be performed within Python: 
+Transcription can also be performed within Python:
 
 ```python
 import whisper
@@ -232,3 +232,16 @@ For the complete list and usage examples, see [MULTILINGUAL_SUBTITLES_GUIDE.md](
 ## License
 
 Whisper's code and model weights are released under the MIT License. See [LICENSE](https://github.com/openai/whisper/blob/main/LICENSE) for further details.
+
+# Memo:
+## 激活虚拟环境
+source venv/bin/activate
+
+## 使用tiny模型（快速）
+whisper /Users/leonyu/Downloads/You_are_not_responsible.MP4 --model tiny --word_timestamps True --output_format srt
+
+## 使用更准确的模型
+whisper /Users/leonyu/Downloads/You_are_not_responsible.MP4 --model base --word_timestamps True --output_format srt
+
+## 指定语言提高准确度
+whisper /Users/leonyu/Downloads/You_are_not_responsible.MP4 --language English --model small --word_timestamps True --output_format srt

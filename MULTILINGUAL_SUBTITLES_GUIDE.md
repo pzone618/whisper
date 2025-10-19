@@ -172,11 +172,16 @@ WEBVTT
 
 ### 常见问题及解决方案
 
-1. **模型下载失败**
+1. **模型下载失败或SHA256校验错误**
    ```bash
-   # 手动下载到缓存目录
+   # 清除损坏的模型文件
+   rm -f ~/.cache/whisper/*.pt
+   
+   # 重新运行命令，模型会自动重新下载
+   whisper audio.mp3 --model tiny --output_format srt
+   
+   # 或手动创建缓存目录
    mkdir -p ~/.cache/whisper
-   # 或使用容器方式，模型会自动缓存
    ```
 
 2. **音频格式不支持**
