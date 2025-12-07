@@ -244,4 +244,6 @@ whisper /Users/leonyu/Downloads/You_are_not_responsible.MP4 --model tiny --word_
 whisper /Users/leonyu/Downloads/You_are_not_responsible.MP4 --model base --word_timestamps True --output_format srt
 
 ## 指定语言提高准确度
-whisper /Users/leonyu/Downloads/You_are_not_responsible.MP4 --language English --model small --word_timestamps True --output_format srt
+whisper '/Users/leonyu/leonyu/media/English/IELTS_20_Test1_Part1.m4a' --language English --model large --word_timestamps True --output_format srt
+
+whisper '/Users/leonyu/leonyu/media/Cantonese/Binbyi_20251207_01.MP4' --language Cantonese --model large --word_timestamps True --output_format srt
