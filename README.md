@@ -244,6 +244,14 @@ whisper /Users/leonyu/Downloads/You_are_not_responsible.MP4 --model tiny --word_
 whisper /Users/leonyu/Downloads/You_are_not_responsible.MP4 --model base --word_timestamps True --output_format srt
 
 ## 指定语言提高准确度
-whisper '/Users/leonyu/leonyu/media/English/IELTS_20_Test1_Part1.m4a' --language English --model large --word_timestamps True --output_format srt
+whisper '/Users/leonyu/Downloads/audio/20251225_WasChristmasBetterInThePast.mp3' --language English --model large --word_timestamps True --output_format srt
 
-whisper '/Users/leonyu/leonyu/media/Cantonese/Binbyi_20251207_01.MP4' --language Cantonese --model large --word_timestamps True --output_format srt
+python subtitle_extractor.py /Users/leonyu/dev/GitHub/listening_training/6ME/mp3o/ \
+  --batch \
+  --language English \
+  --model large \
+  --word-timestamps \
+  --formats srt \
+  --output-dir /Users/leonyu/dev/GitHub/listening_training/6ME/srt/
+
+whisper '/Users/leonyu/leonyu/IELTS/Peppa_Pig/Season_03/Episode 5 - Hide and Seek.mp4' --language Cantonese --model large --word_timestamps True --output_format srt
