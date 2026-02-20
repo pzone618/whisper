@@ -21,7 +21,7 @@
 
 ### 3. 系统工具
 - ✅ ffmpeg 已通过 Homebrew 安装
-- ✅ 缓存目录已创建: ~/.cache/whisper/
+- ✅ 缓存目录已更改: /Volumes/LaCie/big_model/whisper
 - ✅ tiny 模型文件已下载 (虽然校验有问题)
 
 ## ⚠️ 当前问题

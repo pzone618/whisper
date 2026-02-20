@@ -183,22 +183,22 @@ URL: https://openaipublic.azureedge.net/main/whisper/models/e5b1a55b89c1367dacf9
 
 1. **创建缓存目录**
    ```bash
-   mkdir -p ~/.cache/whisper
+   mkdir -p /Volumes/LaCie/big_model/whisper
    ```
 
 2. **下载模型文件**
    ```bash
    # 使用 curl 下载（推荐）
-   curl -L -o ~/.cache/whisper/base.pt "https://openaipublic.azureedge.net/main/whisper/models/ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e/base.pt"
+   curl -L -o /Volumes/LaCie/big_model/whisper/base.pt "https://openaipublic.azureedge.net/main/whisper/models/ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e/base.pt"
    
    # 或使用 wget
-   wget -O ~/.cache/whisper/base.pt "https://openaipublic.azureedge.net/main/whisper/models/ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e/base.pt"
+   wget -O /Volumes/LaCie/big_model/whisper/base.pt "https://openaipublic.azureedge.net/main/whisper/models/ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e/base.pt"
    ```
 
 3. **验证下载完整性**
    ```bash
    # Whisper 会自动验证 SHA256 哈希值
-   ls -lh ~/.cache/whisper/
+   ls -lh /Volumes/LaCie/big_model/whisper/
    ```
 
 ### 下载工具选择
@@ -240,24 +240,24 @@ URL: https://openaipublic.azureedge.net/main/whisper/models/e5b1a55b89c1367dacf9
 1. **模型下载失败或SHA256校验错误**
    ```bash
    # 清除损坏的模型文件
-   rm -f ~/.cache/whisper/*.pt
+   rm -f /Volumes/LaCie/big_model/whisper/*.pt
    
    # 重新运行命令，模型会自动重新下载
    whisper audio.mp3 --model tiny --output_format srt
    
    # 或手动创建缓存目录
-   mkdir -p ~/.cache/whisper
+   mkdir -p /Volumes/LaCie/big_model/whisper
    ```
 
 2. **网络连接不稳定导致下载中断**
    ```bash
    # 使用带重试功能的curl手动下载
    curl --retry 3 --retry-delay 5 --connect-timeout 30 --max-time 1800 \
-     -L -o ~/.cache/whisper/base.pt \
+     -L -o /Volumes/LaCie/big_model/whisper/base.pt \
      "https://openaipublic.azureedge.net/main/whisper/models/ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e/base.pt"
    
    # 验证文件完整性
-   ls -lh ~/.cache/whisper/base.pt
+   ls -lh /Volumes/LaCie/big_model/whisper/base.pt
    ```
 
 3. **SSL证书错误（macOS常见）**
@@ -266,7 +266,7 @@ URL: https://openaipublic.azureedge.net/main/whisper/models/e5b1a55b89c1367dacf9
    /Applications/Python\ 3.x/Install\ Certificates.command
    
    # 或临时跳过SSL验证（不推荐用于生产环境）
-   curl -k -L -o ~/.cache/whisper/base.pt "模型URL"
+   curl -k -L -o /Volumes/LaCie/big_model/whisper/base.pt "模型URL"
    ```
 
 2. **音频格式不支持**

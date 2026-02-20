@@ -38,7 +38,7 @@ def test_whisper_functionality():
         
         # 先检查是否有本地缓存
         import os
-        cache_dir = os.path.expanduser("~/.cache/whisper")
+        cache_dir = "/Volumes/LaCie/big_model/whisper"
         if os.path.exists(cache_dir):
             print(f"📁 缓存目录: {cache_dir}")
             files = os.listdir(cache_dir) if os.path.exists(cache_dir) else []
@@ -105,7 +105,7 @@ def main():
         print("💡 但核心模块已正确安装")
         print("💡 可能需要:")
         print("   - 检查网络连接")
-        print("   - 清除缓存: rm -rf ~/.cache/whisper/")
+        print("   - 清除缓存: rm -rf /Volumes/LaCie/big_model/whisper")
         print("   - 重新运行测试")
     
     return 0 if success else 1

@@ -23,7 +23,7 @@ def test_basic_functionality():
         print(f"   {i:2d}. {model}")
     
     # 3. 检查缓存目录
-    cache_dir = os.path.expanduser("~/.cache/whisper")
+    cache_dir = "/Volumes/LaCie/big_model/whisper"
     print(f"\n3. 📁 缓存目录: {cache_dir}")
     if os.path.exists(cache_dir):
         files = [f for f in os.listdir(cache_dir) if f.endswith('.pt')]
@@ -116,7 +116,7 @@ def show_next_steps():
     
     print("\n3. 🔧 如果模型下载有问题:")
     print("   - 检查网络连接")
-    print("   - 清除缓存: rm -rf ~/.cache/whisper/")
+    print("   - 清除缓存: rm -rf /Volumes/LaCie/big_model/whisper")
     print("   - 使用VPN或更换网络")
     print("   - 尝试从不同位置下载")
     

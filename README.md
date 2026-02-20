@@ -244,7 +244,7 @@ whisper /Users/leonyu/Downloads/You_are_not_responsible.MP4 --model tiny --word_
 whisper /Users/leonyu/Downloads/You_are_not_responsible.MP4 --model base --word_timestamps True --output_format srt
 
 ## 指定语言提高准确度
-whisper '/Users/leonyu/Downloads/S01E01.mkv' --language English --model large --word_timestamps True --output_format srt
+whisper '/Users/leonyu/dev/GitHub/leon-reboot-system/storage/sla/en/ielts/cambridge-ielts-19-academic-listening-1-audio-1.mp3' --language English --model large --word_timestamps True --output_format srt
 
 python subtitle_extractor.py /Users/leonyu/dev/GitHub/listening_training/6ME/mp3o/ \
   --batch \
